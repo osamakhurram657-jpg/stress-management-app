@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stress Management App</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f5f5f5; }
+    h1 { margin-top: 50px; }
+    button { padding: 15px 25px; margin: 10px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>Stress Management App</h1>
+  <p>Select your mood:</p>
+  <button onclick="saveMood('Happy')">😊 Happy</button>
+  <button onclick="saveMood('Sad')">😢 Sad</button>
+  <button onclick="saveMood('Angry')">😡 Angry</button>
+
+  <p id="result"></p>
+
+  <script>
+    function saveMood(mood) {
+      document.getElementById("result").innerText = "Mood saved: " + mood;
+    }
+  </script>
+</body>
+</html>
