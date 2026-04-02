@@ -3,24 +3,99 @@
 <head>
   <title>Stress Management App</title>
   <style>
-    body { font-family: Arial; text-align: center; background: #f5f5f5; }
-    h1 { margin-top: 50px; }
-    button { padding: 15px 25px; margin: 10px; font-size: 18px; }
+    body { font-family: Arial; background: #eef2f3; margin:20px; }
+    h1, h2 { text-align:center; }
+    .card { margin:20px auto; padding:15px; width:90%; background:white; border-radius:10px; }
+    .btn { padding: 10px 20px; margin: 5px; font-size: 16px; cursor:pointer; }
   </style>
 </head>
 <body>
-  <h1>Stress Management App</h1>
-  <p>Select your mood:</p>
-  <button onclick="saveMood('Happy')">😊 Happy</button>
-  <button onclick="saveMood('Sad')">😢 Sad</button>
-  <button onclick="saveMood('Angry')">😡 Angry</button>
 
+<h1>Stress Management App</h1>
+
+<div class="card">
+  <h2>Problem Statement</h2>
+  <p>Stress is a common issue in modern life, especially among students. Many people do not have simple tools to monitor and manage their mental health.</p>
+</div>
+
+<div class="card">
+  <h2>Objectives</h2>
+  <ul>
+    <li>Help users track their mood</li>
+    <li>Provide stress relief tips</li>
+    <li>Promote mental health awareness</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Key Features</h2>
+  <ul>
+    <li>Mood Selection</li>
+    <li>Mood History</li>
+    <li>Daily Stress Tips</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Technologies Used</h2>
+  <p>HTML, CSS, JavaScript, Netlify (Deployment), GitHub (Version Control)</p>
+</div>
+
+<div class="card">
+  <h2>Select Your Mood</h2>
+  <button class="btn" onclick="saveMood('Happy')">😊 Happy</button>
+  <button class="btn" onclick="saveMood('Sad')">😢 Sad</button>
+  <button class="btn" onclick="saveMood('Angry')">😡 Angry</button>
   <p id="result"></p>
+</div>
 
-  <script>
-    function saveMood(mood) {
-      document.getElementById("result").innerText = "Mood saved: " + mood;
-    }
-  </script>
+<div class="card">
+  <h2>Daily Tips</h2>
+  <p id="tip">Click for a tip</p>
+  <button class="btn" onclick="showTip()">Get Tip</button>
+</div>
+
+<div class="card">
+  <h2>Mood History</h2>
+  <ul id="history"></ul>
+</div>
+
+<div class="card">
+  <h2>Outcome</h2>
+  <p>This project successfully demonstrates a simple and interactive system for stress management. Users can track their mood and receive helpful tips to improve their mental well-being.</p>
+</div>
+
+<script>
+let historyList = [];
+
+function saveMood(mood) {
+  document.getElementById("result").innerText = "Mood saved: " + mood;
+  historyList.push(mood);
+  updateHistory();
+}
+
+function updateHistory() {
+  let list = document.getElementById("history");
+  list.innerHTML = "";
+  historyList.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item;
+    list.appendChild(li);
+  });
+}
+
+function showTip() {
+  let tips = [
+    "Take a deep breath",
+    "Go for a walk",
+    "Listen to music",
+    "Talk to a friend",
+    "Relax and rest"
+  ];
+  let random = tips[Math.floor(Math.random() * tips.length)];
+  document.getElementById("tip").innerText = random;
+}
+</script>
+
 </body>
 </html>
